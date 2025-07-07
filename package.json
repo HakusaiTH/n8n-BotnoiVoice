@@ -1,6 +1,6 @@
 {
   "name": "n8n-botnoivoice",
-  "version": "1.0.0",
+  "version": "1.0.01",
   "description": "n8n custom node for Botnoi AI text-to-speech, generating audio from text and providing an audio URL.",
   "keywords": [
     "n8n-community-node-package",
