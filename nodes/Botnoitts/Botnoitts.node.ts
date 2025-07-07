@@ -7,6 +7,10 @@ import {
 	NodeConnectionType,
 } from 'n8n-workflow';
 
+import { speakerOptions } from './speakers';
+import { languageOptions } from './languageOptions';
+
+
 export class Botnoitts implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Botnoi TTS',
@@ -40,16 +44,7 @@ export class Botnoitts implements INodeType {
 				displayName: 'Speaker',
 				name: 'speaker',
 				type: 'options',
-				options: [
-					{
-						name: 'Speaker 1',
-						value: '1',
-					},
-					{
-						name: 'Speaker 2',
-						value: '2',
-					},
-				],
+				options: speakerOptions,
 				default: '1',
 				description: 'The speaker voice to use for audio generation',
 			},
@@ -105,17 +100,8 @@ export class Botnoitts implements INodeType {
 				displayName: 'Language',
 				name: 'language',
 				type: 'options',
-				options: [
-					{
-						name: 'Thai',
-						value: 'th',
-					},
-					{
-						name: 'English',
-						value: 'en',
-					},
-				],
-				default: 'th',
+				options: languageOptions,
+				default: 'en',
 				description: 'The language of the input text',
 			},
 		],

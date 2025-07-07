@@ -1,0 +1,27 @@
+// nodes/Botnoitts/languageOptions.ts
+
+export const languageOptions = [
+  { name: 'Thai', value: 'th' },
+  { name: 'Chinese', value: 'zh' },
+  { name: 'Japanese', value: 'ja' },
+  { name: 'Burmese', value: 'my' },
+  { name: 'Lao', value: 'lo' },
+  { name: 'Vietnamese', value: 'vi' },
+  { name: 'Indonesian', value: 'id' },
+  { name: 'Cambodian', value: 'km' },
+  { name: 'Filipino', value: 'fil' },
+  { name: 'Arabic', value: 'ar' },
+  { name: 'German', value: 'de' },
+  { name: 'Spanish', value: 'es' },
+  { name: 'French', value: 'fr' },
+  { name: 'Malay', value: 'ms' },
+  { name: 'Portuguese (Brazil)', value: 'pt-br' },
+  { name: 'Russian', value: 'ru' },
+  { name: 'English', value: 'en' },
+  { name: 'Dutch', value: 'nl' },
+  { name: 'Korean', value: 'ko' },
+  { name: 'Hindi', value: 'hi' },
+  { name: 'Singaporean', value: 'sg' },
+  { name: 'Turkish', value: 'tr' },
+  { name: 'Italian', value: 'it' },
+];

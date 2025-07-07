@@ -1,5 +1,5 @@
 {
-  "name": "n8n-BotnoiVoice",
+  "name": "n8n-botnoivoice",
   "version": "1.0.0",
   "description": "n8n custom node for Botnoi AI text-to-speech, generating audio from text and providing an audio URL.",
   "keywords": [
@@ -11,14 +11,14 @@
     "ai"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/HakusaiTH/n8n-nodes-botnoitts",
+  "homepage": "https://github.com/HakusaiTH/n8n-BotnoiVoice",
   "author": {
     "name": "Phoov",
     "email": "phoov@example.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/HakusaiTH/n8n-nodes-botnoitts.git"
+    "url": "https://github.com/HakusaiTH/n8n-BotnoiVoice.git"
   },
   "engines": {
     "node": ">=20.15"
