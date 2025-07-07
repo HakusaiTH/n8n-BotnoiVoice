@@ -1,5 +1,5 @@
 {
-  "name": "n8n-nodes-botnoitts",
+  "name": "n8n-BotnoiVoice",
   "version": "1.0.0",
   "description": "n8n custom node for Botnoi AI text-to-speech, generating audio from text and providing an audio URL.",
   "keywords": [
@@ -11,26 +11,27 @@
     "ai"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/<your-github-username>/n8n-nodes-botnoitts",
+  "homepage": "https://github.com/HakusaiTH/n8n-nodes-botnoitts",
   "author": {
     "name": "Phoov",
-    "email": "your-email@example.com"
+    "email": "phoov@example.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<your-github-username>/n8n-nodes-botnoitts.git"
+    "url": "https://github.com/HakusaiTH/n8n-nodes-botnoitts.git"
   },
   "engines": {
     "node": ">=20.15"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "npx rimraf dist && tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",
     "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+    "prepublishOnly": "npm run build && npm run lint"
   },
   "files": [
     "dist"
@@ -38,8 +39,6 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js",
       "dist/credentials/BotnoiApi.credentials.js"
     ],
     "nodes": [
@@ -52,6 +51,7 @@
     "eslint-plugin-n8n-nodes-base": "^1.16.3",
     "gulp": "^5.0.0",
     "prettier": "^3.5.3",
+    "rimraf": "^5.0.5",
     "typescript": "^5.8.2"
   },
   "peerDependencies": {
