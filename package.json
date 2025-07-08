@@ -1,6 +1,6 @@
 {
   "name": "n8n-botnoivoice",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "n8n node for BotnoiVoice Text-to-Speech, supporting natural Thai and ASEAN voices with over 100 options. Ideal for voiceovers, podcasts, e-learning, and more.",
   "keywords": [
     "n8n-community-node-package",
