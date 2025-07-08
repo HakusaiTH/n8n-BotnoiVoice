@@ -1,7 +1,7 @@
 {
   "name": "n8n-botnoivoice",
-  "version": "1.0.01",
-  "description": "n8n custom node for Botnoi AI text-to-speech, generating audio from text and providing an audio URL.",
+  "version": "1.0.0",
+  "description": "n8n node for BotnoiVoice Text-to-Speech, supporting natural Thai and ASEAN voices with over 100 options. Ideal for voiceovers, podcasts, e-learning, and more.",
   "keywords": [
     "n8n-community-node-package",
     "botnoi",
@@ -13,8 +13,8 @@
   "license": "MIT",
   "homepage": "https://github.com/HakusaiTH/n8n-BotnoiVoice",
   "author": {
-    "name": "Phoov",
-    "email": "phoov@example.com"
+    "name": "Phoovadet",
+    "email": "phoovadet.noobdev@gmail.com"
   },
   "repository": {
     "type": "git",
