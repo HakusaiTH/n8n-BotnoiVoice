@@ -13,14 +13,14 @@ import { languageOptions } from './languageOptions';
 
 export class Botnoitts implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Botnoi TTS',
+		displayName: 'Botnoi Voice',
 		name: 'botnoitts',
 		icon: 'file:botnoi.svg',
 		group: ['transform'],
 		version: 1,
 		description: 'Generates audio from text using Botnoi AI API',
 		defaults: {
-			name: 'Botnoi TTS',
+			name: 'Botnoi Voice',
 		},
 		inputs: [NodeConnectionType.Main],
 		outputs: [NodeConnectionType.Main],
