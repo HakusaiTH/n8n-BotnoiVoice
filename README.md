@@ -1,48 +1,94 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# 🔊 n8n-BotnoiVoice
 
-# n8n-nodes-starter
+ปลั๊กอินสำหรับเชื่อมต่อ [Botnoi Voice API](https://voice.botnoi.ai/api-login) กับ [n8n](https://n8n.io/) เพื่อให้สามารถใช้งาน Text-to-Speech (TTS) ภาษาไทยภายใน Workflow ของ n8n ได้อย่างง่ายดาย
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](https://n8n.io). It includes the node linter and other dependencies.
+---
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+## 📌 ความต้องการก่อนเริ่มใช้งาน
 
-If you would like your node to be available on n8n cloud you can also [submit your node for verification](https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/).
+### ติดตั้งเครื่องมือพื้นฐาน:
 
-## Prerequisites
+* [Git](https://git-scm.com/downloads)
+* Node.js เวอร์ชัน **20 ขึ้นไป**
 
-You need the following installed on your development machine:
+  * แนะนำติดตั้งผ่าน [nvm](https://github.com/nvm-sh/nvm) สำหรับ Linux, Mac, WSL
+  * สำหรับ Windows ดูวิธีติดตั้งได้จาก [Microsoft Docs](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows)
+* ติดตั้ง n8n ด้วยคำสั่ง:
 
-* [git](https://git-scm.com/downloads)
-* Node.js and npm. Minimum version Node 20. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
+  ```bash
+  npm install -g n8n
   ```
-  npm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
 
-## Using this starter
+---
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+## 🔐 การรับ API Key จาก Botnoi Voice
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
+1. เข้าไปที่เว็บไซต์: [https://voice.botnoi.ai/api-login](https://voice.botnoi.ai/api-login)
+2. ลงชื่อเข้าใช้หรือสมัครสมาชิก
+3. คลิกปุ่มเพื่อ **สร้าง API Key** ใหม่
+   ![Generate API Key](https://github.com/user-attachments/assets/53cae275-c947-49ac-aa5f-49c224914da9)
+4. คัดลอก API Key ที่ได้เก็บไว้ใช้งานใน n8n
+
+---
+
+## ⚙️ เพิ่ม API Key ลงใน n8n
+
+1. เปิด n8n ขึ้นมา
+2. ไปที่เมนู "Credentials" หรือ "ข้อมูลรับรอง"
+3. เพิ่ม Credential ใหม่ของ Botnoi Voice แล้ววาง API Key ที่ได้มา
+   ![Add API Key](https://github.com/user-attachments/assets/7ddb26c4-2241-420f-8212-5096e1e052c5)
+
+---
+
+## 🚀 วิธีใช้งานปลั๊กอินนี้
+
+1. Clone โปรเจกต์:
+
+   ```bash
+   git clone https://github.com/HakusaiTH/n8n-BotnoiVoice.git
+   cd n8n-BotnoiVoice
    ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
+
+2. ติดตั้ง dependencies:
+
+   ```bash
+   npm install
    ```
-3. Run `npm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `npm run lint` to check for errors or `npm run lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
 
-## More information
+3. เปิดโปรเจกต์ใน editor ที่คุณใช้งาน เช่น VS Code
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+4. ดูตัวอย่าง node และ credential ได้ที่โฟลเดอร์ `/nodes` และ `/credentials`
 
-## License
+5. แก้ไขหรือปรับแต่งเพื่อให้เหมาะกับการใช้งานของคุณ
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+6. ทดสอบการทำงานด้วย:
+
+   ```bash
+   npm run lint       # ตรวจสอบโค้ด
+   npm run lintfix    # แก้ไขอัตโนมัติ
+   ```
+
+7. ทดสอบ Node แบบ local:
+
+   * ดูวิธีใช้งานได้จาก: [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/)
+
+---
+
+## 📦 การเผยแพร่
+
+หลังจากพัฒนาเสร็จแล้ว สามารถเผยแพร่ node ของคุณไปยัง npm ได้โดยดูขั้นตอนที่นี่:
+👉 [Contributing packages to the registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry)
+
+---
+
+## 📚 ข้อมูลเพิ่มเติม
+
+* เอกสารการสร้าง Node สำหรับ n8n:
+  [https://docs.n8n.io/integrations/creating-nodes/](https://docs.n8n.io/integrations/creating-nodes/)
+
+---
+
+## 📝 License
+
+[MIT License](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+
