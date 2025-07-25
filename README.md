@@ -160,13 +160,6 @@ n8n start
 
 ---
 
-## 📦 การเผยแพร่ (Publish npm)
-
-หากต้องการเผยแพร่ปลั๊กอินนี้ไปยัง npm:
-👉 [Contributing packages to the registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry)
-
----
-
 ## 📚 ข้อมูลเพิ่มเติม
 
 * เอกสารการสร้าง Node สำหรับ n8n:
