@@ -1,3 +1,10 @@
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=HASUucNBM0w" target="_blank">
+    <img src="https://img.youtube.com/vi/HASUucNBM0w/0.jpg" alt="ดูวิดีโอบน YouTube" width="640"/>
+  </a>
+</p>
+
+
 # 🔊 n8n-BotnoiVoice
 
 ปลั๊กอินสำหรับเชื่อมต่อ [Botnoi Voice API](https://voice.botnoi.ai/api-login) กับ [n8n](https://n8n.io/) เพื่อใช้งาน Text-to-Speech (TTS) ภาษาไทยภายใน Workflow ของ n8n ได้อย่างง่ายดาย
