@@ -1,5 +1,5 @@
 {
-  "name": "@phoovadet.noobdev/n8n-botnoi-voice",
+  "name": "n8n-nodes-botnoi-voice",
   "version": "2.0.1",
   "description": "n8n node for BotnoiVoice Text-to-Speech, supporting natural Thai and ASEAN voices with over 100 options. Ideal for voiceovers, podcasts, e-learning, and more.",
   "keywords": [
@@ -13,8 +13,8 @@
   "license": "MIT",
   "homepage": "https://github.com/HakusaiTH/n8n-BotnoiVoice",
   "author": {
-    "name": "Phoovadet",
-    "email": "phoovadet.noobdev@gmail.com"
+    "name": "Phoovadet Noobdev",
+    "email": "phoovadetnoobdev@gmail.com"
   },
   "repository": {
     "type": "git",

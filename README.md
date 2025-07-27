@@ -1,25 +1,24 @@
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=HASUucNBM0w" target="_blank">
-    <img src="https://img.youtube.com/vi/HASUucNBM0w/0.jpg" alt="ดูวิดีโอบน YouTube" width="640"/>
-  </a>
+<a href="https://www.youtube.com/watch?v=HASUucNBM0w" target="_blank">
+<img src="https://img.youtube.com/vi/HASUucNBM0w/0.jpg" alt="Watch videos on YouTube" width="640"/>
+</a>
 </p>
-
 
 # 🔊 n8n-BotnoiVoice
 
-ปลั๊กอินสำหรับเชื่อมต่อ [Botnoi Voice API](https://voice.botnoi.ai/api-login) กับ [n8n](https://n8n.io/) เพื่อใช้งาน Text-to-Speech (TTS) ภาษาไทยภายใน Workflow ของ n8n ได้อย่างง่ายดาย
+Plug-in to connect [Botnoi Voice API](https://voice.botnoi.ai/api-login) to [n8n](https://n8n.io/) to easily use Thai Text-to-Speech (TTS) within n8n Workflow
 
 ---
 
-## 📌 ความต้องการก่อนเริ่มใช้งาน
+## 📌 Requirements before starting
 
-### 1. ติดตั้งเครื่องมือพื้นฐาน
+### 1. Install basic tools
 
 - [Git](https://git-scm.com/downloads)
-- Node.js เวอร์ชัน **20 ขึ้นไป**
-  - แนะนำติดตั้งผ่าน [nvm](https://github.com/nvm-sh/nvm) (Linux, Mac, WSL)
-  - สำหรับ Windows ดูวิธีติดตั้งจาก [Microsoft Docs](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows)
-- ติดตั้ง n8n:
+- Node.js version **20 and above**
+- Recommended to install via [nvm](https://github.com/nvm-sh/nvm) (Linux, Mac, WSL)
+- For Windows, see [Microsoft Docs](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows) for installation instructions
+- Install n8n:
 
 ```bash
 npm install -g n8n
@@ -27,11 +26,11 @@ npm install -g n8n
 
 ---
 
-## 🚀 วิธีใช้งานปลั๊กอิน
+## 🚀 How to use the plugin
 
-### ✅ ติดตั้งจาก npm (แนะนำ)
+### ✅ Install from npm (recommended)
 
-1. สร้างโฟลเดอร์ custom ของ n8n:
+1. Create a custom n8n folder:
 
 ```bash
 mkdir -p ~/.n8n/custom
@@ -39,38 +38,38 @@ cd ~/.n8n/custom
 npm init -y
 ```
 
-2. ติดตั้งปลั๊กอิน:
+2. Install the plugin:
 
 ```bash
 npm install @phoovadet.noobdev/n8n-botnoi-voice
 ```
 
-3. เริ่มใช้งาน:
+3. Start using:
 
 ```bash
 n8n start
 ```
 
-> 💡 ค้นหา node ด้วยชื่อในไฟล์ `.ts` เช่น `Botnoitts`
+> 💡 Search for node by name in `.ts` file, e.g. `Botnoitts`
 
 ---
 
-### 🛠️ ติดตั้งแบบ local (ถ้า clone repo)
+### 🛠️ Install locally (if cloning repo)
 
-1. ติดตั้งแบบ global:
+1. Install globally:
 
 ```bash
 npm install -g n8n
 ```
 
-2. สร้าง build และเชื่อมแบบ local:
+2. Build and connect locally:
 
 ```bash
 npm run build
 npm link
 ```
 
-3. เชื่อมเข้ากับ n8n instance:
+3. Connect to n8n instance:
 
 ```bash
 mkdir -p ~/.n8n/custom
@@ -79,7 +78,7 @@ npm init -y
 npm link n8n-botnoi-voice
 ```
 
-4. เริ่มใช้งาน:
+4. Start using:
 
 ```bash
 n8n start
@@ -87,90 +86,90 @@ n8n start
 
 ---
 
-## 🔐 การรับ API Key จาก Botnoi Voice
+## 🔐 Get API Key from Botnoi Voice
 
-1. ไปที่: [https://voice.botnoi.ai/api-login](https://voice.botnoi.ai/api-login)
-2. ลงชื่อเข้าใช้ / สมัครสมาชิก
-3. คลิกปุ่ม **สร้าง API Key**
+1. Go to: [https://voice.botnoi.ai/api-login](https://voice.botnoi.ai/api-login)
+2. Login / Sign up
+3. Click **Generate API Key** button
 
 ![Generate API Key](https://github.com/user-attachments/assets/53cae275-c947-49ac-aa5f-49c224914da9)
 
-4. คัดลอก API Key สำหรับใช้ใน n8n
+4. Copy API Key to use in n8n
 
 ---
 
-## ⚙️ เพิ่ม API Key ใน n8n
+## ⚙️ Add API Key in n8n
 
-1. เปิด n8n และไปที่เมนู **Credentials**
-2. เลือก **New Credential** → เลือก Botnoi Voice
-3. วาง API Key ที่ได้มา
+1. Open n8n and go to **Credentials** menu
+2. Select **New Credential** → Select Botnoi Voice
+3. Paste the obtained API Key
 
 ![Add API Key](https://github.com/user-attachments/assets/7ddb26c4-2241-420f-8212-5096e1e052c5)
 ![Credential Page](https://github.com/user-attachments/assets/2d5a905a-7f46-4447-a5fe-aa682a318621)
 
-> ✅ ถ้า Key ถูกต้องจะขึ้นว่า “Connection tested successfully”
+> ✅ If the key is correct, it will say “Connection tested successfully”
 
 ---
 
-## 🧾 การใช้งาน
+## 🧾 Usage
 
-### 1. กรอกข้อความที่ต้องการแปลงเสียง
+### 1. Enter the text you want to convert
 
 ![Text Input](https://github.com/user-attachments/assets/a20ee802-7ecb-4005-bc18-7ffe18e2ac92)
 
-* เลือก node `Botnoi TTS`
-* กรอกข้อความในช่อง `Text` หรือใช้ Expression เช่น `{{ $json.output }}`
+* Select the `Botnoi TTS` node
+* Enter the text in the `Text` field or use Expression For example `{{ $json.output }}`
 
 ---
 
-### 2. เลือกเสียงผู้พูด
+### 2. Select the speaker's voice
 
 ![Speaker](https://github.com/user-attachments/assets/1628e724-a7c6-4f76-a203-dad037eca3a4)
 
-* รองรับเสียงกว่า 300 แบบ เช่น Eva, John, เสียงภาษาไทย, ญี่ปุ่น, เวียดนาม ฯลฯ
+* Supports over 300 voices, such as Eva, John, Thai, Japanese, Vietnamese, etc.
 
 ---
 
-### 3. เลือกภาษาให้เหมาะกับข้อความ
+### 3. Select the language that suits the text
 
 ![Language](https://github.com/user-attachments/assets/8fb5380f-f4b2-48cf-89f6-03d77e8679d4)
 
-* เลือกภาษาในช่อง `Language` เช่น `Thai`, `English`, `Japanese` ฯลฯ
+* Select a language in the `Language` field, such as `Thai`, `English`, `Japanese`, etc.
 
 ---
 
-### 4. สร้างเสียงโดยกด Execute
+### 4. Create a sound by pressing Execute
 
 ![Execute](https://github.com/user-attachments/assets/06ecb4b4-cd85-45a2-b99e-6db17f63f443)
 
-* คลิก **Execute Step**
-* ไฟล์เสียงจะถูกสร้างและแสดง `audio_url` สำหรับฟังหรือดาวน์โหลด
+* Click **Execute Step**
+* The sound file will be generated and display `audio_url` for listening or downloading
 
 ---
 
-## 🤖 ตัวอย่าง Workflow ร่วมกับ OpenAI และ Agent
+## 🤖 Example Workflow with OpenAI and Agent
 
 ![Workflow Example](https://github.com/user-attachments/assets/940067f7-8240-41af-9582-22692509733f)
 
-1. ข้อความจากผู้ใช้ → ไปยัง Agent
-2. Agent ประมวลผล → ส่งไป OpenAI
-3. ดึงข้อความตอบกลับ → ส่งเข้า Botnoi TTS → ได้ไฟล์เสียง
+1. Message from user → to Agent
+2. Agent processes → send to OpenAI
+3. Retrieve response → send to Botnoi TTS → get audio file
 
 ---
 
-## 🧠 ใช้ Expression กับค่าจาก JSON
+## 🧠 Use Expression with value from JSON
 
 ![Expression](https://github.com/user-attachments/assets/0e7cac89-cd77-42da-bea9-e979cb021bb4)
 
-* ใช้ `{{ $json.output }}` เพื่อใช้ค่าจาก Node ก่อนหน้า
-* เหมาะกับระบบอัตโนมัติที่ดึงค่าจาก AI หรือ API
+* Use `{{ $json.output }}` to use value from previous Node
+* Suitable for automation system that pull value from AI or API
 
 ---
 
-## 📚 ข้อมูลเพิ่มเติม
+## 📚 More information
 
-* เอกสารการสร้าง Node สำหรับ n8n:
-  [https://docs.n8n.io/integrations/creating-nodes/](https://docs.n8n.io/integrations/creating-nodes/)
+* Documentation for creating Node for n8n: 
+[https://docs.n8n.io/integrations/creating-nodes/](https://docs.n8n.io/integrations/creating-nodes/)
 
 ---
 
