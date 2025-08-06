@@ -137,7 +137,7 @@ export class Botnoitts implements INodeType {
 					volume,
 					speed,
 					type_media: typeMedia,
-					save_file: saveFile,
+					save_file: saveFile.toString(),
 					language,
 					page: "user"
 				},
