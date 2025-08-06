@@ -139,6 +139,7 @@ export class Botnoitts implements INodeType {
 					type_media: typeMedia,
 					save_file: saveFile,
 					language,
+					page: "user"
 				},
 			};
 
