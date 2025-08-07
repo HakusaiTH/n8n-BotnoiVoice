@@ -41,7 +41,7 @@ npm init -y
 2. Install the plugin:
 
 ```bash
-npm install @phoovadet.noobdev/n8n-botnoi-voice
+npm i n8n-nodes-botnoi-voice
 ```
 
 3. Start using:
