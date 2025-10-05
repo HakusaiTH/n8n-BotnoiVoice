@@ -10,7 +10,6 @@ import {
 import { speakerOptions } from './speakers';
 import { languageOptions } from './languageOptions';
 
-
 export class Botnoitts implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Botnoi Voice',
@@ -19,17 +18,10 @@ export class Botnoitts implements INodeType {
 		group: ['transform'],
 		version: 1,
 		description: 'Generates audio from text using Botnoi AI API',
-		defaults: {
-			name: 'Botnoi Voice',
-		},
+		defaults: { name: 'Botnoi Voice' },
 		inputs: [NodeConnectionType.Main],
 		outputs: [NodeConnectionType.Main],
-		credentials: [
-			{
-				name: 'botnoiApi',
-				required: true,
-			},
-		],
+		credentials: [{ name: 'botnoiApi', required: true }],
 		properties: [
 			{
 				displayName: 'Text',
@@ -54,11 +46,7 @@ export class Botnoitts implements INodeType {
 				type: 'number',
 				default: 1,
 				description: 'The volume of the generated audio (0 to 2)',
-				typeOptions: {
-					min: 0,
-					max: 2,
-					step: 0.1,
-				},
+				typeOptions: { min: 0, max: 2, step: 0.1 },
 			},
 			{
 				displayName: 'Speed',
@@ -66,25 +54,15 @@ export class Botnoitts implements INodeType {
 				type: 'number',
 				default: 1,
 				description: 'The speed of the generated audio (0.5 to 2)',
-				typeOptions: {
-					min: 0,
-					max: 2,
-					step: 0.1,
-				},
+				typeOptions: { min: 0, max: 2, step: 0.1 },
 			},
 			{
 				displayName: 'Media Type',
 				name: 'typeMedia',
 				type: 'options',
 				options: [
-					{
-						name: 'MP3',
-						value: 'mp3',
-					},
-					{
-						name: 'WAV',
-						value: 'wav',
-					},
+					{ name: 'MP3', value: 'mp3' },
+					{ name: 'WAV', value: 'wav' },
 				],
 				default: 'mp3',
 				description: 'The format of the output audio file',
@@ -120,15 +98,11 @@ export class Botnoitts implements INodeType {
 			const saveFile = this.getNodeParameter('saveFile', itemIndex) as boolean;
 			const language = this.getNodeParameter('language', itemIndex) as string;
 
-			const credentials = (await this.getCredentials('botnoiApi')) as { apiKey: string };
-			const apiKey = credentials.apiKey;
-
-			const options: any = {
+			const requestOptions: any = {
 				method: 'POST',
 				url: 'https://api-voice.botnoi.ai/openapi/v1/generate_audio',
 				json: true,
 				headers: {
-					'Botnoi-Token': apiKey,
 					'Content-Type': 'application/json',
 				},
 				body: {
@@ -139,24 +113,33 @@ export class Botnoitts implements INodeType {
 					type_media: typeMedia,
 					save_file: saveFile.toString(),
 					language,
-					page: "user"
+					page: 'user',
 				},
 			};
 
-			let responseData;
 			try {
-				responseData = await this.helpers.httpRequest(options);
-			} catch (error) {
-				throw new NodeOperationError(this.getNode(), error);
-			}
+				const responseData = await this.helpers.httpRequestWithAuthentication.call(
+					this,
+					'botnoiApi',
+					requestOptions,
+				);
 
-			returnData.push({
-				json: {
-					response: responseData,
-				},
-			});
+				returnData.push({
+					json: { response: responseData },
+					pairedItem: { item: itemIndex },
+				});
+			} catch (error) {
+				if (this.continueOnFail()) {
+					returnData.push({
+						json: { error: (error as Error).message },
+						pairedItem: { item: itemIndex },
+					});
+					continue;
+				}
+				throw new NodeOperationError(this.getNode(), error as Error, { itemIndex });
+			}
 		}
 
-		return this.prepareOutputData(returnData);
+		return [returnData];
 	}
 }

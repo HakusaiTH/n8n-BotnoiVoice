@@ -2,38 +2,61 @@ import {
 	ICredentialType,
 	ICredentialTestRequest,
 	INodeProperties,
+	IAuthenticateGeneric,
 } from 'n8n-workflow';
 
 export class BotnoiApi implements ICredentialType {
 	name = 'botnoiApi';
 	displayName = 'Botnoi API';
-	documentationUrl = 'https://www.botnoi.ai/openapi';
+	documentationUrl = 'https://www.botnoigroup.com/botnoivoice/doc/api-user-guide';
+
+	// ให้เลือกว่าจะส่งคีย์ด้วย header ไหน
 	properties: INodeProperties[] = [
+		{
+			displayName: 'Header Name',
+			name: 'headerName',
+			type: 'options',
+			options: [
+				{ name: 'Botnoi-Token (Legacy)', value: 'Botnoi-Token' },
+				{ name: 'Api-Key (AWS/Docs)', value: 'Api-Key' },
+			],
+			default: 'Botnoi-Token',
+			description: 'เลือกชื่อ header สำหรับส่งคีย์ตามบัญชี/เอกสารที่คุณใช้งาน',
+		},
 		{
 			displayName: 'API Key',
 			name: 'apiKey',
 			type: 'string',
 			default: '',
-			typeOptions: {
-				password: true,
-			},
-			description: 'Your Botnoi.ai API Key',
+			typeOptions: { password: true },
+			description: 'Your Botnoi Voice API key',
 		},
 	];
 
-	// ✅ เพิ่ม test ให้ n8n ตรวจสอบ credential ได้
-	// ใช้การส่ง HTTP request ไป endpoint จริง
-	// แล้วตรวจสอบว่า key ใช้ได้ไหม
+	// ให้ n8n ฉีด header ให้อัตโนมัติเมื่อใช้ httpRequestWithAuthentication
+	authenticate: IAuthenticateGeneric = {
+		type: 'generic',
+		properties: {
+			headers: {
+				// ใช้ headerName ที่ผู้ใช้เลือก
+				'={{$credentials.headerName}}': '={{$credentials.apiKey}}',
+				'Content-Type': 'application/json',
+			},
+		},
+	};
+
+	// ใช้ headerName เดียวกับที่เลือกในหน้า cred ตอนทดสอบ
 	test: ICredentialTestRequest = {
 		request: {
 			method: 'POST',
 			url: 'https://api-voice.botnoi.ai/openapi/v1/generate_audio',
 			headers: {
+				'={{$credentials.headerName}}': '={{$credentials.apiKey}}',
 				'Content-Type': 'application/json',
-				'Botnoi-Token': '={{$credentials.apiKey}}',
 			},
+			// ตัวอย่าง payload สั้น ๆ และไม่บังคับ save_file เป็นไฟล์
 			body: {
-				text: 'hello world',
+				text: 'hello',
 				speaker: '1',
 				volume: 1,
 				speed: 1,
@@ -41,6 +64,7 @@ export class BotnoiApi implements ICredentialType {
 				save_file: false,
 				language: 'en',
 			},
+			// ถ้า API คืน 2xx ถือว่าผ่าน (บางสภาพแวดล้อมอาจคืน 201)
 		},
 	};
 }
